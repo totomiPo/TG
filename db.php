@@ -18,6 +18,13 @@ try{
     die("Ошибка подключения к базе данных");
 }
 
+function tt($value){
+    echo '<pre>';
+    print_r($value);
+    echo '</pre>';
+    exit();
+}
+
 function dbCheck($query){
     // Ошибка - массив
     $errInfo = $query->errorInfo();

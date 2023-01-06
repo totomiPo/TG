@@ -1,5 +1,6 @@
 <?php
 include("topics.php");
+$chat = selectAll('chat', ['iddial' => $_GET['id']]);
 ?>
 <!doctype html>
 <html lang="en">
@@ -15,10 +16,12 @@ include("topics.php");
           <div class="content row">
               <div class="main-content col-md-9 col-12">
                   <h2>Анонимные диалоги</h2>
-                  <div id="dialog"></div>
+                  <div id="dialog">
+                      
+                  </div>
                   <form class="chat" action="dialog.php" method="post">
                       <input type="text" id="message" autofocus autocomplete="off"/>
-                      <input name="msg-btn" class="btn" type="submit" value="Отправить" id="button-addon2"/>
+                      <input name="msg-btn" class="btn" type="submit" value="Отправить" id="sendMail"/>
                   </form>
               </div>
               <div class="sidebar col-md-3 col-12">
@@ -37,19 +40,28 @@ include("topics.php");
       </div>
 
      <script>
-     var login = null, start = 0, url = 'http://tg/chat.php';
+     var start = 0, url = 'http://tg/chat.php';
+     // вычленяю id страницы
+     var ssilk = document.location.search;
+     var searchParams = new URLSearchParams(ssilk);
+     var mydial = searchParams.get("id");
      load();
      $(document).ready(function(){
-         login = prompt("Введите своё имя/логин: ");
-         $('form').submit(function(e){
-             //Post - изменяю данные в бд, Get - получаю данные из бд
-             $.post(url, {
-                 message: $('#message').val(),
-                 login: login
-             });
-             $('#message').val('');
+         var login = prompt("Введи свое имя:");
+         $("#sendMail").on("click", function(){
+             var message = $("#message").val().trim();
+             $.ajax({
+                 url: 'chat.php',
+                 type: 'POST',
+                 cache: false,
+                 data: {'login': login, 'message': message, 'ssilk': mydial},
+                 dataType: 'html',
+                 success: function(data){
+                     $('#message').val('');
+                 }
+             })
              return false;
-         })
+         });
      });
 
      function load(){
@@ -57,7 +69,9 @@ include("topics.php");
              if(res.items){
                  res.items.forEach(item =>{
                      start = item.id;
-                     $('#dialog').append(renderMessage(item));
+                     if (item.iddial == mydial){
+                        $('#dialog').append(renderMessage(item));
+                     }
                  })
              };
              load();

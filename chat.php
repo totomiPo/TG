@@ -8,9 +8,10 @@ if($db->connect_error){
 $res = array();
 $login = isset($_POST['login']) ? trim($_POST['login']) : null;
 $message = isset($_POST['message']) ? trim($_POST['message']) : null;
+$ssilk = (int)isset($_POST['ssilk']) ? $_POST['ssilk'] : null;
 
 if(!empty($message) || !empty($login)){
-    $sql = "INSERT INTO `chat` (`message`, `login`) VALUES ('".$message."', '".$login."')";
+    $sql = "INSERT INTO `chat` (`message`, `login`, `iddial`) VALUES ('".$message."', '".$login."', '$ssilk')";
     $res['status'] = $db->query($sql);
 }
 
