@@ -1,3 +1,6 @@
+<?php
+include("topics.php");
+?>
 <!doctype html>
 <html lang="en">
   <head>
@@ -23,7 +26,9 @@
                   <div class="section topics">
                       <h3>Беседы</h3>
                       <ul>
-                          <li><a href="dialog.php">Беседа 1</a></li>
+                          <?php foreach ($messages as $key => $msg): ?>
+                              <li><a href="<?="dialog.php?id=" . $msg['id']; ?>"><?= $msg['name']; ?></a></li>
+                          <?php endforeach; ?>
                       </ul>
                   </div>
                   <a role="button" href="index.php" class="btn btn-outline-danger">Выйти из диалога</a>
