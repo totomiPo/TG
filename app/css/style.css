@@ -1,0 +1,121 @@
+html,
+h1, h2, h3, h4, h5, h6{
+    color: #5c5b5b;
+}
+
+body{
+    background: #f0f0f0;
+}
+
+/* Меню диалогов */
+
+.sidebar{
+    margin-top: 20px;
+}
+
+.sidebar a{
+    display: block;
+    margin: auto;
+}
+
+.sidebar .section{
+    background: #ffffff;
+    padding: 20px;
+    border-radius: 4px;
+    margin-bottom: 15px;
+    margin-top: 20px;
+}
+
+.sidebar .topics ul{
+    margin: 0px;
+    padding: 0px;
+    list-style: none;
+    border-top: 1px solid #e0e0e0;
+
+}
+
+.sidebar .topics ul li a{
+    display: block;
+    padding: 15px 0px 15px 0px;
+    border-bottom: 1px solid #e0e0e0;
+    transition: all 0.3s;
+    text-decoration: none;
+    font-weight: 600;
+    color: #5c5b5b;
+    font-size: 1.2em;
+}
+
+
+.sidebar .topics ul li a:hover{
+    padding-left: 10px;
+    transition: all 0.5s;
+}
+
+
+/* Название */
+
+.main-content h2{
+    margin-top: 10px;
+}
+
+/* Чат */
+
+.content .main-content{
+    overflow: hidden;
+    margin: 0;
+}
+
+.main-content #dialog{
+    background-color: #696969;
+    width: 700px;
+    height: 80vh;
+    border-radius: 15px;
+    overflow-x: hidden;
+    padding: 10px;
+}
+
+.main-content .chat{
+    display: flex;
+}
+
+.main-content form #message{
+    font-size: 1rem;
+    padding: 5px;
+    margin: 5px 10px 0px 0px;
+    appearance: none;
+    -webkit-appearance: none;
+    border: 1px solid #696969;
+    border-radius: 3px;
+    width: 580px;
+}
+
+.main-content form .btn{
+    margin-top: 5px;
+    border-radius: 3px;
+    font-size: 1.2rem;
+}
+
+.main-content .chat #message{
+    display: flex;
+}
+
+/* Сообщения */
+
+.msg{
+    padding: 10px 10px;
+    margin-bottom: 10px;
+    width: fit-content;
+    background-color: #262626;
+    border-radius: 5px;
+    color: #fff;
+}
+
+.msg p{
+    margin: 0;
+    font-weight: bold;
+    color: #578fff;
+}
+
+.msg p span{
+    color: #757575;
+}
