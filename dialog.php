@@ -1,6 +1,7 @@
 <?php
 include("topics.php");
 $chat = selectAll('chat', ['iddial' => $_GET['id']]);
+$d = selectOne('dialog', ['id' => $_GET['id']]);
 ?>
 <!doctype html>
 <html lang="en">
@@ -15,9 +16,9 @@ $chat = selectAll('chat', ['iddial' => $_GET['id']]);
       <div class="container">
           <div class="content row">
               <div class="main-content col-md-9 col-12">
-                  <h2>Анонимные диалоги</h2>
+                  <h2><?= $d['name']; ?></h2>
                   <div id="dialog">
-                      
+
                   </div>
                   <form class="chat" action="dialog.php" method="post">
                       <input type="text" id="message" autofocus autocomplete="off"/>
